@@ -22,6 +22,13 @@ public class RealState{
         }
         return msj;
     }
+    /* 
+    public String addApartment(String idApa, int nRooms, int nBathRooms, boolean balcony){
+        String msj = "Se ha creado exitosamente el cuarto";
+        boolean isEmpty = false;
+        for(int i = 0; i<)
+    }
+    */
     public Building searchBuilding(String id){
         Building building = null;
         for(int i = 0; i<TOTAL_BUILDINGS; i++){

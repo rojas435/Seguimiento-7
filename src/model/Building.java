@@ -11,6 +11,7 @@ public class Building {
         this.direction = direction;
         this.apartments = new Apartment[apartmentQuantity];
     }
+    
     public String getId(){
         return id;
     }

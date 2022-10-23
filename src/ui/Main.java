@@ -46,16 +46,12 @@ public class Main {
                 "\n<<<<< Welcome to the Game >>>>>\n"+	
                 "1. Crear Edificio\n"+
                 "2. Crear Apartamentos\n"+
-                "3. Registro de tesoros a un nivel\n"+
-                "4. Modificar puntaje de un jugador\n"+
-                "5. Incrementar nivel de jugaddor\n"+
-                "6. Informar tesoros y de enemigos de un nivel\n"+
-                "7. Informar cantidad de un tesoro en todo el juego\n"+
-                "8. Informar cantidad de enemigos de un tipo en todo el juegol\n"+ 
-				"9. Informar el tesoro mas repetido de todos los niveles\n"+
-                "10. Informar el enemigo que otorga mayor puntaje y en el nivel que se ubica\n"+
-                "11. Informar la cantidad de consonantes en los nombres de los enemigos\n"+
-                "12. Informar top 5 jugadores\n"+
+                "3. Crear Usuario\n"+
+                "4. Consultar cuantos apartamentos hay disponibles en un determinado edificio\n"+
+                "5. Consultar el valor mensual total a recibir por los apartamentos que se encuentran alquilados en un edificio\n"+
+                "6. La app debe permitir consultar si un apartamento particular se encuentra disponible\n"+
+                "7. consultar la cantidad de apartamentos que tiene arrendados una persona particular\n"+ 
+				"8. Consultar el valor total por arrendamiento\n"+
 				"0. Exit. \n"+
 				"Opcion: ");  
 	}
@@ -72,16 +68,15 @@ public class Main {
                             System.out.println("Error, ese id ya existe");
 
                         }else{
-                            System.out.println("Dime el numero de apartamentos que va tener este edificio");
+                            System.out.println("Dime el numero de apartamentos que va tener este edificio: ");
                             int apartmentQuantity = reader.nextInt();
                             reader.nextLine();
-                            System.out.print("Dime la direccion donde va estar ubicado este edificio");
+                            System.out.print("Dime la direccion donde va estar ubicado este edificio: ");
                             String direction = reader.nextLine();
 
                             System.out.println(controller.addBuilding(id, apartmentQuantity, direction));
                         }
                         break;
-
 					case 2:
 						break;
 
@@ -103,18 +98,6 @@ public class Main {
                     case 8:
                         break;
                         
-                    case 9:
-                        break;
-
-                    case 10:
-                        break;
-                    
-                    case 11:
-                        break;
-                        
-                    case 12:
-                        break;    
-
 					case 0: 
 						System.out.println("Exit program.");
 						break; 

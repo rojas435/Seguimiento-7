@@ -68,7 +68,7 @@ public class Main {
                             System.out.println("Error, ese id ya existe");
 
                         }else{
-                            System.out.println("Dime el numero de apartamentos que va tener este edificio: ");
+                            System.out.print("Dime el numero de apartamentos que va tener este edificio: ");
                             int apartmentQuantity = reader.nextInt();
                             reader.nextLine();
                             System.out.print("Dime la direccion donde va estar ubicado este edificio: ");
@@ -78,6 +78,42 @@ public class Main {
                         }
                         break;
 					case 2:
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							reader.nextLine();
+							System.out.println("Dime el Id del edifcio para agregar este apartamento");
+							id = reader.nextLine();
+							if(controller.searchBuilding(id) == null){
+								System.out.println("Error, ese eficio no existe");
+							}else{
+								System.out.println("Dime el Id para este apartamento");
+								String idApa = reader.nextLine();
+								System.out.println("Dime el numero de cuartos");
+								int nRooms = reader.nextInt();
+								System.out.println("Dime el numero de baños");
+								int nBathRooms = reader.nextInt();
+								reader.nextLine();
+								System.out.println("Dime si este apartamento tendra balcon (Y/N)");
+								String balconyOption = reader.nextLine();
+								boolean balcony = true;
+								while (!balconyOption.equalsIgnoreCase("Y") && !balconyOption.equalsIgnoreCase("N")){
+									if(balconyOption.equalsIgnoreCase("Y")){
+										balcony = true;
+									}else if(balconyOption.equalsIgnoreCase("N")){
+										balcony = false;
+										
+									}else{
+										System.out.println("Opcion Invalida, intentalo nuevamente");
+										balconyOption = reader.nextLine();
+									}	
+								} 
+								
+								System.out.println("Dime el valor de arrendamiento de este apartamento");
+								double rent = reader.nextDouble();
+								System.out.println(controller.addApartment(id,idApa,nRooms,nBathRooms,balcony,rent));
+							}
+						}
 						break;
 
 					case 3:

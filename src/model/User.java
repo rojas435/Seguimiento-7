@@ -1,6 +1,5 @@
 package model;
-
-import java.lang.ProcessBuilder.Redirect.Type;
+import java.util.Scanner;
 
 public abstract class User {
     private TypeOfDocument typeOfDocument;
@@ -16,7 +15,7 @@ public abstract class User {
         this.name = name;
         this.phone = phone;
         this.accountNumber = accountNumber;
-        this.accountNumber = accountNumber;
+        this.bankAccount = bankAccount;
 
         switch(typeOfDocument){
             case 1:
@@ -31,6 +30,7 @@ public abstract class User {
             case 4:
             this.typeOfDocument = TypeOfDocument.TARJETADEIDENTIDAD;
         } 
+
         switch(typeOfPhone){
             case 1:
             this.typeOfPhone = TypeOfPhone.HOME;

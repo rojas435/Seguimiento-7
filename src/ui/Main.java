@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
     private Scanner reader;
 	private RealState controller;
-	private Building controller2;
 
 	public Main() {
 		reader = new Scanner(System.in); 
@@ -57,6 +56,7 @@ public class Main {
 				"Opcion: ");  
 	}
         //sout 
+		// != si encontro algo, si existe y si es == null es por que no existe
 		public void executeOption(int option){
 
 				switch(option){
@@ -90,42 +90,101 @@ public class Main {
 							}else{
 								System.out.println("Dime el Id para este apartamento");
 								String idApa = reader.nextLine();
-								if(controller2.searchApartment(idApa) == null){
-									System.out.println("Error, ese Id ya existe");
+								if(controller.searchApartment(idApa, id) != null){
+									System.out.println("Error, este id ya existe");
 								}else{
 									System.out.println("Dime el numero de cuartos");
-								int nRooms = reader.nextInt();
-								System.out.println("Dime el numero de baños");
-								int nBathRooms = reader.nextInt();
-								reader.nextLine();
-								System.out.println("Dime si este apartamento tendra balcon (Y/N)");
-								String balconyOption = reader.nextLine();
-								boolean balcony = true;
-								while (!balconyOption.equalsIgnoreCase("Y") && !balconyOption.equalsIgnoreCase("N")){
-									if(balconyOption.equalsIgnoreCase("Y")){
-										balcony = true;
-									}else if(balconyOption.equalsIgnoreCase("N")){
-										balcony = false;
-										
-									}else{
-										System.out.println("Opcion Invalida, intentalo nuevamente");
-										balconyOption = reader.nextLine();
-									}	
-								} 
-								
-								System.out.println("Dime el valor de arrendamiento de este apartamento");
-								double rent = reader.nextDouble();
-								System.out.println(controller.addApartment(id,idApa,nRooms,nBathRooms,balcony,rent));
+									int nRooms = reader.nextInt();
+									System.out.println("Dime el numero de baños");
+									int nBathRooms = reader.nextInt();
+									reader.nextLine();
+									System.out.println("Dime si este apartamento tendra balcon (Y/N)");
+									String balconyOption = reader.nextLine();
+									boolean balcony = true;
+									while (!balconyOption.equalsIgnoreCase("Y") && !balconyOption.equalsIgnoreCase("N")){
+										if(balconyOption.equalsIgnoreCase("Y")){
+											balcony = true;
+										}else if(balconyOption.equalsIgnoreCase("N")){
+											balcony = false;
+											
+										}else{
+											System.out.println("Opcion Invalida, intentalo nuevamente");
+											balconyOption = reader.nextLine();
+										}	
+									} 
+									
+									System.out.println("Dime el valor de arrendamiento de este apartamento");
+									double rent = reader.nextDouble();
+									System.out.println(controller.addApartment(id,idApa,nRooms,nBathRooms,balcony,rent));
 								}
-								
 							}
 						}
 						break;
 
 					case 3:
-						break;
+						System.out.println("");
+						System.out.print("\nSelecciona tipo de identificacion: " +
+						"\n1.Cedula"+
+						"\n2.Extranjero"+
+						"\n3.Nit"+
+						"\n4.Tarjeta de identidad"+
+						"\nOpcion: ");
+						int type = reader.nextInt();
+						reader.nextLine();
+						System.out.print("Dime tu nombre: ");
+						String name = reader.nextLine();
+						
+						System.out.println("Dime tu numero de telefono: ");
+						int phone = reader.nextInt();
 
+						System.out.print("\nSelecciona tu tipo de telefono: "+
+						"\n1.Home"+
+						"\n2.Office"+
+						"\n3.Movil"+
+						"\n4.Family"+
+						"\n5.Other"+
+						"\nOpcion: ");
+						int typeOfPhone = reader.nextInt();
+
+						System.out.print("Dime el numero de documento: ");
+						int document = reader.nextInt();
+
+						if(controller.searchUser(document)==null){
+							System.out.println("\nDime que tipo de persona eres"+
+							"\n1.Dueño"+
+							"\n2.Arrendatario"+
+							"\n Opcion: ");
+							type = reader.nextInt();
+							reader.nextLine();
+							switch(type){
+								case 1:
+									System.out.println("Dime el numero de cuenta: ");
+									int accountNumber = reader.nextInt();
+									System.out.println("Dime el nombre del banco");
+									String bankAccount = reader.nextLine();
+									System.out.println(controller.addPerson(type,document,name,phone,typeOfPhone,accountNumber,bankAccount));
+									break;
+								case 2:
+									System.out.println(controller.addPerson(type,document,name,phone,typeOfPhone));
+									break;	
+							}
+						}
+						
+						
+
+
+
+
+
+						break;
                     case 4:
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							System.out.println("Por favor dime el Id del edificio que deseas consultar");
+							id =reader.nextLine();
+							System.out.println();
+						}
                         break;
 
                     case 5:

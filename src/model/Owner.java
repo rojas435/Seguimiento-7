@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Owner extends User {
+public final class Owner extends User {
     protected int accountNumber;
     protected String bankAccount;
 

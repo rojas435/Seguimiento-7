@@ -1,16 +1,18 @@
 package model;
-import model.*;
 public class RealState{
-    public static final int TOTAL_BUILDINGS = 100;
+    public static final int TOTAL_BUILDINGS = 5;
 
-    public static final int TOTAL_OWNERS = 100;
-    public static final int TOTAL_TENANTS = 100;
+    public static final int TOTAL_PEOPLE = 20;
+    
 
     private Building[] buildings;
-    private Apartment[] apartments;
+   
+    private User[] users;
 
+    
     public RealState(){
         buildings = new Building[TOTAL_BUILDINGS];
+        users = new User[TOTAL_PEOPLE];
     }
 
     public String addBuilding(String id, int apartmentQuantity, String direction){
@@ -23,6 +25,18 @@ public class RealState{
             }
         }
         return msj;
+    }
+
+    public Apartment searchApartment(String idApa,String id){
+        Apartment apartment = null;
+        boolean isFound = false;
+        for(int i = 0; i < TOTAL_BUILDINGS && !isFound; i++){
+            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(id)){
+                apartment = buildings[i].searchApartment(idApa);
+                isFound = true;
+            }
+        }
+        return apartment;
     }
      
     public String buildingAvailability(){
@@ -44,16 +58,7 @@ public class RealState{
         }
         return msj;
     }
-    public String searchApartment(String idApa){
-        Apartment apartments = null;
-        for(int i = 0; i < apartments.length; i++){
-            if(apartments[i] != null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
-                apartment = apartments[i];
-            }
-        }
-        return apartment;
-    }
-    }
+    
     
     public Building searchBuilding(String id){
         Building building = null;
@@ -64,10 +69,41 @@ public class RealState{
         }
         return building;
     }
-
-    /* 
-    public String addPerson(int typeOfDocument, ){
-
+        
+    public String addPerson(int typeOfDocument,int document, String name, int phone, int typeOfPhone, int accountNumber, String bankAccount){
+        String msj = "Se ha agregado una persona exitosamente";
+        boolean isEmpty = false;
+        for(int i  = 0; i < TOTAL_PEOPLE && !isEmpty; i++){
+            if(users[i] ==null){
+                users[i] = new Owner(typeOfDocument, document,name,phone,typeOfPhone,accountNumber,bankAccount);
+            }
+        }
+        return msj;
     }
-    */
+    
+    public String addPerson(int typeOfDocument,int document, String name, int phone, int typeOfPhone){
+        String msj = "Se ha agregado una persona exitosamente";
+        boolean isEmpty = false;
+        for(int i  = 0; i < TOTAL_PEOPLE && !isEmpty; i++){
+            if(users[i] ==null){
+                users[i] = new Tenant(typeOfDocument, document,name,phone,typeOfPhone);
+            }
+        }
+        return msj;
+    }
+
+    public User searchUser(int document){
+        User user = null;
+        boolean isFound = false;
+        for(int i = 0; i<TOTAL_PEOPLE && !isFound; i++){
+            if(users[i] != null && users[i].getDocument() == document){
+                user = users[i];
+                isFound = true;
+            }
+        }
+        return user;
+    }
+    
+
+    
 }

@@ -5,6 +5,8 @@ public class Apartment {
     private int numBathRooms;
     private boolean balcony;
     private double rent;
+    private boolean availability;
+    
 
     public Apartment(String idApa,int numRooms, int numBathRooms, boolean balcony, double rent){
         this.idApa = idApa;
@@ -52,5 +54,9 @@ public class Apartment {
 
     public void setRent(double rent) {
         this.rent = rent;
+    }
+
+    public Object getId() {
+        return null;
     }
 }

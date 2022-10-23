@@ -1,5 +1,4 @@
 package model;
-import java.util.Scanner;
 
 public abstract class User {
     private TypeOfDocument typeOfDocument;
@@ -7,15 +6,12 @@ public abstract class User {
     private String name;
     private int phone;
     private TypeOfPhone typeOfPhone;
-    private int accountNumber;
-    private String bankAccount;
     
-    public User(int typeOfDocument,int document, String name, int phone, int typeOfPhone, int accountNumber, String bankAccount){
+
+    public User(int typeOfDocument,int document, String name, int phone, int typeOfPhone){
         this.document = document;
         this.name = name;
         this.phone = phone;
-        this.accountNumber = accountNumber;
-        this.bankAccount = bankAccount;
 
         switch(typeOfDocument){
             case 1:
@@ -49,4 +45,55 @@ public abstract class User {
             break;
         }
     }
+
+
+    public TypeOfDocument getTypeOfDocument() {
+        return typeOfDocument;
+    }
+
+
+    public void setTypeOfDocument(TypeOfDocument typeOfDocument) {
+        this.typeOfDocument = typeOfDocument;
+    }
+
+
+    public int getDocument() {
+        return document;
+    }
+
+
+    public void setDocument(int document) {
+        this.document = document;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public int getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+
+    public TypeOfPhone getTypeOfPhone() {
+        return typeOfPhone;
+    }
+
+
+    public void setTypeOfPhone(TypeOfPhone typeOfPhone) {
+        this.typeOfPhone = typeOfPhone;
+    }
+    
 }

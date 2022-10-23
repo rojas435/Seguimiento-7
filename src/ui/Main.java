@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     private Scanner reader;
 	private RealState controller;
+	private Building controller2;
 
 	public Main() {
 		reader = new Scanner(System.in); 
@@ -89,7 +90,10 @@ public class Main {
 							}else{
 								System.out.println("Dime el Id para este apartamento");
 								String idApa = reader.nextLine();
-								System.out.println("Dime el numero de cuartos");
+								if(controller2.searchApartment(idApa) == null){
+									System.out.println("Error, ese Id ya existe");
+								}else{
+									System.out.println("Dime el numero de cuartos");
 								int nRooms = reader.nextInt();
 								System.out.println("Dime el numero de baños");
 								int nBathRooms = reader.nextInt();
@@ -112,6 +116,8 @@ public class Main {
 								System.out.println("Dime el valor de arrendamiento de este apartamento");
 								double rent = reader.nextDouble();
 								System.out.println(controller.addApartment(id,idApa,nRooms,nBathRooms,balcony,rent));
+								}
+								
 							}
 						}
 						break;

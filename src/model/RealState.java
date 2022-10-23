@@ -1,5 +1,5 @@
 package model;
-
+import model.*;
 public class RealState{
     public static final int TOTAL_BUILDINGS = 100;
 
@@ -7,7 +7,7 @@ public class RealState{
     public static final int TOTAL_TENANTS = 100;
 
     private Building[] buildings;
-    
+    private Apartment[] apartments;
 
     public RealState(){
         buildings = new Building[TOTAL_BUILDINGS];
@@ -43,6 +43,16 @@ public class RealState{
             }
         }
         return msj;
+    }
+    public String searchApartment(String idApa){
+        Apartment apartments = null;
+        for(int i = 0; i < apartments.length; i++){
+            if(apartments[i] != null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
+                apartment = apartments[i];
+            }
+        }
+        return apartment;
+    }
     }
     
     public Building searchBuilding(String id){

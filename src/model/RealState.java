@@ -45,10 +45,6 @@ public class RealState{
         return msj;
     }
     
-     
-    
-    
-
     public Building searchBuilding(String id){
         Building building = null;
         for(int i = 0; i<TOTAL_BUILDINGS; i++){

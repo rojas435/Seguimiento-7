@@ -25,7 +25,7 @@ public class Building {
         }
     }
     //AQUI TENGO QUE PONER EL searchApartment
-    public Apartment apartment(String idApa){
+    public Apartment searchApartment(String idApa){
         Apartment apartment = null;
         for(int i = 0; i < apartments.length; i++){
             if(apartments[i] != null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){

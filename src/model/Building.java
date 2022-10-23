@@ -25,7 +25,16 @@ public class Building {
         }
     }
     //AQUI TENGO QUE PONER EL searchApartment
-    
+    public Apartment apartment(String idApa){
+        Apartment apartment = null;
+        for(int i = 0; i < apartments.length; i++){
+            if(apartments[i] != null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
+                apartment = apartments[i];
+            }
+        }
+        return apartment;
+    }
+
     
     public String getId(){
         return id;

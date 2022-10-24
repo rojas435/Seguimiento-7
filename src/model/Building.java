@@ -24,18 +24,19 @@ public class Building {
             }
         }
     }
-    /* 
-    public String listApartments(String id){
+     
+    public String listApartments(){
         String msj ="Apartamentos: ";
+        int counter = 0;
         for(int i = 0; i < apartments.length; i++){
-            if(apartments[i] != null && apartments[i].getId().equalsIgnoreCase()==id){
-                msj += apartments[i].getIdApa()
-
+            if(apartments[i] != null && apartments[i].getTenant()==null){
+                counter ++;
             }
         }
+        msj +=counter;
         return msj;
     }
-    */
+    
     
 
     //AQUI TENGO QUE PONER EL searchApartment
@@ -48,6 +49,22 @@ public class Building {
         }
         return apartment;
     }
+    public void addUserToApartment(Owner person,String idApa){
+        for(int i = 0; i<apartments.length; i++){
+            if(apartments[i]!=null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
+                apartments[i].setOwner(person);
+            }
+        }
+    }
+
+    public void addUserToApartment(Tenant person,String idApa){
+        for(int i = 0; i<apartments.length; i++){
+            if(apartments[i]!=null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
+                apartments[i].setTenant(person);
+            }
+        }
+    }
+
 
     
     public String getId(){

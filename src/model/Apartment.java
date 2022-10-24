@@ -6,6 +6,8 @@ public class Apartment {
     private boolean balcony;
     private double rent;
     private boolean availability;
+    private Owner owner;
+    private Tenant tenant;
     
 
     public Apartment(String idApa,int numRooms, int numBathRooms, boolean balcony, double rent){
@@ -16,6 +18,15 @@ public class Apartment {
         this.rent = rent;
     }
 
+    public void setOwner(Owner person){
+        this.owner = person;
+    }
+    public Tenant getTenant(){
+        return tenant;
+    }
+    public void setTenant(Tenant person){
+        this.tenant = person;
+    }
     public String getIdApa() {
         return idApa;
     }

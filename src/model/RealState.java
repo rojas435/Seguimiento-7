@@ -70,23 +70,41 @@ public class RealState{
         return building;
     }
         
-    public String addPerson(int typeOfDocument,int document, String name, int phone, int typeOfPhone, int accountNumber, String bankAccount){
+    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, int phone, int typeOfPhone, int accountNumber, String bankAccount){
         String msj = "Se ha agregado una persona exitosamente";
         boolean isEmpty = false;
+        Owner person = null;
         for(int i  = 0; i < TOTAL_PEOPLE && !isEmpty; i++){
             if(users[i] ==null){
-                users[i] = new Owner(typeOfDocument, document,name,phone,typeOfPhone,accountNumber,bankAccount);
+                person = new Owner(typeOfDocument, document,name,phone,typeOfPhone,accountNumber,bankAccount);
+                users[i] = person;
+            }
+        }
+        boolean isFound = false;
+        for(int i = 0; i < TOTAL_BUILDINGS && !isFound; i++){
+            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(id)){
+                buildings[i].addUserToApartment(person,idApa);
+                isFound = true;
             }
         }
         return msj;
     }
-    
-    public String addPerson(int typeOfDocument,int document, String name, int phone, int typeOfPhone){
+
+    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, int phone, int typeOfPhone){
         String msj = "Se ha agregado una persona exitosamente";
         boolean isEmpty = false;
+        Tenant person = null;
         for(int i  = 0; i < TOTAL_PEOPLE && !isEmpty; i++){
             if(users[i] ==null){
-                users[i] = new Tenant(typeOfDocument, document,name,phone,typeOfPhone);
+                person = new Tenant(typeOfDocument, document,name,phone,typeOfPhone);
+                users[i] = person;
+            }
+        }
+        boolean isFound = false;
+        for(int i = 0; i < TOTAL_BUILDINGS && !isFound; i++){
+            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(id)){
+                buildings[i].addUserToApartment(person,idApa);
+                isFound = true;
             }
         }
         return msj;
@@ -103,7 +121,16 @@ public class RealState{
         }
         return user;
     }
-    
+    public String listApartments(String id){
+        String msj = "";
+        boolean isFound = false;
+        for(int i = 0; i<TOTAL_BUILDINGS && !isFound; i++){
+            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(id)){
+                msj = buildings[i].listApartments();
+            }
+        }
+        return msj;
+    }
 
     
 }

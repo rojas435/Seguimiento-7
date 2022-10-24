@@ -131,9 +131,10 @@ public class Main {
 						"\nOpcion: ");
 						int type = reader.nextInt();
 						reader.nextLine();
+
 						System.out.print("Dime tu nombre: ");
 						String name = reader.nextLine();
-						
+
 						System.out.println("Dime tu numero de telefono: ");
 						int phone = reader.nextInt();
 
@@ -156,38 +157,48 @@ public class Main {
 							"\n Opcion: ");
 							type = reader.nextInt();
 							reader.nextLine();
-							switch(type){
-								case 1:
-									System.out.println("Dime el numero de cuenta: ");
-									int accountNumber = reader.nextInt();
-									System.out.println("Dime el nombre del banco");
-									String bankAccount = reader.nextLine();
-									System.out.println(controller.addPerson(type,document,name,phone,typeOfPhone,accountNumber,bankAccount));
-									break;
-								case 2:
-									System.out.println(controller.addPerson(type,document,name,phone,typeOfPhone));
-									break;	
+
+							System.out.println("Dime el id del edificio: ");
+							id = reader.nextLine();
+							if(controller.searchBuilding(id)==null){
+								System.out.println("Error, el edificio no existe");
+								
+							}else if(controller.buildingAvailability().equals("No hay edificios registrados")){
+								System.out.println(controller.buildingAvailability());
+							}else{
+								System.out.println("Dime el numero del apartamento a asignar: ");
+								String idApa = reader.nextLine();
+								switch(type){
+									case 1:
+
+										System.out.println("Dime el numero de cuenta: ");
+										int accountNumber = reader.nextInt();
+										System.out.println("Dime el nombre del banco");
+										String bankAccount = reader.nextLine();
+										System.out.println(controller.addPerson(id,idApa,type,document,name,phone,typeOfPhone,accountNumber,bankAccount));
+										break;
+									case 2:
+
+										System.out.println(controller.addPerson(id,idApa,type,document,name,phone,typeOfPhone));
+										break;	
+								}
 							}
 						}
 						
-						
-
-
-
-
-
 						break;
                     case 4:
 						if(controller.buildingAvailability().equals("No hay edificios registrados")){
 							System.out.println(controller.buildingAvailability());
 						}else{
-							System.out.println("Por favor dime el Id del edificio que deseas consultar");
+							reader.nextLine();
+							System.out.println("Por favor dime el Id del edificio que deseas consultar: ");
 							id =reader.nextLine();
-							System.out.println();
+							System.out.println(controller.listApartments(id));
 						}
                         break;
 
                     case 5:
+
                         break;
 
                     case 6:

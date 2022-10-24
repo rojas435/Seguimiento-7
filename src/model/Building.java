@@ -65,8 +65,17 @@ public class Building {
         }
     }
 
+    public double monthlyValue(){
+        double rent = 0;
+        for(int i = 0; i<apartments.length; i++){
+            if(apartments[i] != null && apartments[i].getTenant() != null){
+                rent += apartments[i].getRent();
+            }
 
-    
+        }
+        return rent;
+    }
+
     public String getId(){
         return id;
     }

@@ -198,7 +198,14 @@ public class Main {
                         break;
 
                     case 5:
-
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							reader.nextLine();
+							System.out.print("Dime el id del edificio que deseas consultar: ");
+							id = reader.nextLine();
+							System.out.println(controller.monthlyValue(id));
+						}
                         break;
 
                     case 6:

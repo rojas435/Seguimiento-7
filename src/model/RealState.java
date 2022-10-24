@@ -131,6 +131,17 @@ public class RealState{
         }
         return msj;
     }
+    public String monthlyValue(String idApa){
+        String msj = "";
+        boolean isFound = false;
+        for(int i = 0; i<TOTAL_BUILDINGS && !isFound; i++){
+            if(buildings[i] !=  null && buildings[i].getId().equalsIgnoreCase(idApa)){
+                msj += buildings[i].monthlyValue();
+                isFound = true;
+            }
+        }
+        return msj;
+    }
 
     
 }

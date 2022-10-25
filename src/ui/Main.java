@@ -173,6 +173,7 @@ public class Main {
 
 										System.out.println("Dime el numero de cuenta: ");
 										int accountNumber = reader.nextInt();
+										reader.nextLine();
 										System.out.println("Dime el nombre del banco");
 										String bankAccount = reader.nextLine();
 										System.out.println(controller.addPerson(id,idApa,type,document,name,phone,typeOfPhone,accountNumber,bankAccount));
@@ -209,6 +210,16 @@ public class Main {
                         break;
 
                     case 6:
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							reader.nextLine();
+							System.out.println("Dime el id al edificio que deseas consultar: ");
+							id = reader.nextLine();
+							System.out.println("Dime el id del apartamento que deseas consultar");
+							String idApa = reader.nextLine();
+							/*System.out.println(controller.checkAvailability(id,idApa));*/
+						}
                         break;
                         
                     case 7:

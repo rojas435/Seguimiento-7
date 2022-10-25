@@ -68,12 +68,22 @@ public class Building {
     public double monthlyValue(){
         double rent = 0;
         for(int i = 0; i<apartments.length; i++){
-            if(apartments[i] != null && apartments[i].getTenant() != null){
+            if(apartments[i] != null && apartments[i].getTenant() == null){
                 rent += apartments[i].getRent();
             }
 
         }
         return rent;
+    }
+
+    public String checkAvailability(){
+        String msj = "Se encuentra ocupado";
+        if(apartments[0] == null){
+            msj ="No se encuentra ocupado";
+        }else if(apartments[apartments.length-1] != null){
+            msj = "No esta asignado";
+        }
+        return msj;
     }
 
     public String getId(){

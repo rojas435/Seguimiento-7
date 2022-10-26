@@ -70,7 +70,7 @@ public class RealState{
         return building;
     }
         
-    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, int phone, int typeOfPhone, int accountNumber, String bankAccount){
+    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, String phone, int typeOfPhone, int accountNumber, String bankAccount){
         String msj = "Se ha agregado una persona exitosamente";
         boolean isEmpty = false;
         Owner person = null;
@@ -90,7 +90,7 @@ public class RealState{
         return msj;
     }
 
-    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, int phone, int typeOfPhone){
+    public String addPerson(String id,String idApa,int typeOfDocument,int document, String name, String phone, int typeOfPhone){
         String msj = "Se ha agregado una persona exitosamente";
         boolean isEmpty = false;
         Tenant person = null;
@@ -142,17 +142,35 @@ public class RealState{
         }
         return msj;
     }
+     
     public String checkAvailability(String id, String idApa){
-        String msj = "";
+        String msj = "Este apartamento no esta disponible.";
         boolean isFound = false;
         for(int i = 0; i<TOTAL_BUILDINGS && !isFound; i++){
-            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(idApa)){
-                msj += buildings[i].checkAvailability();
+            if(buildings[i] != null && buildings[i].getId().equalsIgnoreCase(id)){
                 isFound = true;
+                if(buildings[i].checkAvailability(idApa)){
+                    msj ="Este apartamento si esta disponible.";
+                }
             }
         }
         return msj;
     }
+    
+    public String apartmentsCounter(String name){
+        String msj = "Esta es la cantidad de apartamentos que tiene esta persona: ";
+        int counter = 0;
+        for(int i = 0; i<TOTAL_BUILDINGS; i++){
+            if(buildings[i] != null){
+                counter+= buildings[i].apartmentsCounter(name);
+            }
+            
+        }
+        msj+= counter;
+        return msj;
+    }
+
+    
 
     
 }

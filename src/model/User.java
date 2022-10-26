@@ -4,11 +4,11 @@ public abstract class User {
     private TypeOfDocument typeOfDocument;
     private int document;
     private String name;
-    private int phone;
+    private String phone;
     private TypeOfPhone typeOfPhone;
     
 
-    public User(int typeOfDocument,int document, String name, int phone, int typeOfPhone){
+    public User(int typeOfDocument,int document, String name, String phone, int typeOfPhone){
         this.document = document;
         this.name = name;
         this.phone = phone;
@@ -77,12 +77,12 @@ public abstract class User {
     }
 
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

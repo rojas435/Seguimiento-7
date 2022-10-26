@@ -17,6 +17,7 @@ public class Apartment {
         this.balcony = balcony;
         this.rent = rent;
     }
+    
 
     public void setOwner(Owner person){
         this.owner = person;

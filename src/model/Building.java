@@ -49,6 +49,7 @@ public class Building {
         }
         return apartment;
     }
+
     public void addUserToApartment(Owner person,String idApa){
         for(int i = 0; i<apartments.length; i++){
             if(apartments[i]!=null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
@@ -75,16 +76,40 @@ public class Building {
         }
         return rent;
     }
-
-    public String checkAvailability(){
-        String msj = "Se encuentra ocupado";
-        if(apartments[0] == null){
-            msj ="No se encuentra ocupado";
-        }else if(apartments[apartments.length-1] != null){
-            msj = "No esta asignado";
+    
+    public boolean checkAvailability(String idApa){
+        boolean isAvailable = false;
+        boolean isFound = false;
+        for(int i =0; i<apartments.length && !isFound; i++){    
+            if(apartments[i] != null && apartments[i].getIdApa().equalsIgnoreCase(idApa)){
+                if(apartments[i].getTenant() == null){
+                    isAvailable = true;
+                }
+                isFound = true;
+            }
         }
-        return msj;
+        return isAvailable;
     }
+
+    public int apartmentsCounter(String name){
+        int counter = 0;
+        for(int i = 0; i<apartments.length; i++){   
+            if(apartments[i] != null && apartments[i].getTenant().getName().equalsIgnoreCase(name)){
+                counter ++;
+            }
+        }
+        return counter;
+    }
+    /* 
+    public double rentalValue(){
+        for(int i =0; i<apartments.length; i++){
+            if(apartments[i] != null && apartments[i].get){
+
+            }
+        }
+    }
+    */
+    
 
     public String getId(){
         return id;

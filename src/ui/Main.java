@@ -49,7 +49,7 @@ public class Main {
                 "3. Crear Usuario\n"+
                 "4. Consultar cuantos apartamentos hay disponibles en un determinado edificio\n"+
                 "5. Consultar el valor mensual total a recibir por los apartamentos que se encuentran alquilados en un edificio\n"+
-                "6. La app debe permitir consultar si un apartamento particular se encuentra disponible\n"+
+                "6. Consultar si un apartamento particular se encuentra disponible\n"+
                 "7. consultar la cantidad de apartamentos que tiene arrendados una persona particular\n"+ 
 				"8. Consultar el valor total por arrendamiento\n"+
 				"0. Exit. \n"+
@@ -136,7 +136,7 @@ public class Main {
 						String name = reader.nextLine();
 
 						System.out.println("Dime tu numero de telefono: ");
-						int phone = reader.nextInt();
+						String phone = reader.nextLine();
 
 						System.out.print("\nSelecciona tu tipo de telefono: "+
 						"\n1.Home"+
@@ -185,7 +185,7 @@ public class Main {
 								}
 							}
 						}
-						
+
 						break;
                     case 4:
 						if(controller.buildingAvailability().equals("No hay edificios registrados")){
@@ -218,14 +218,29 @@ public class Main {
 							id = reader.nextLine();
 							System.out.println("Dime el id del apartamento que deseas consultar");
 							String idApa = reader.nextLine();
-							/*System.out.println(controller.checkAvailability(id,idApa));*/
+
+							System.out.println(controller.checkAvailability(id,idApa));
 						}
                         break;
                         
                     case 7:
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							
+							System.out.println("Dime el nombre de la persona que deseas consultar: ");
+							reader.nextLine();
+							name = reader.nextLine();
+							System.out.println(controller.apartmentsCounter(name));
+						}
                         break;
 
                     case 8:
+						if(controller.buildingAvailability().equals("No hay edificios registrados")){
+							System.out.println(controller.buildingAvailability());
+						}else{
+							/*System.out.println(controller.rentalValue());*/
+						}
                         break;
                         
 					case 0: 
